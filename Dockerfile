@@ -24,6 +24,7 @@ RUN echo "deb http://apt.llvm.org/bullseye/ llvm-toolchain-bullseye main" >> /et
     llvm-runtime \
     llvm \
     python3-clang \
+    wget \
  && rm -rf /var/lib/apt/lists/*
 
 # BOOST 1.60 with Boost geometry extensions
