@@ -3,6 +3,7 @@ FROM debian:bullseye-slim
 RUN apt-get update -yq \
  && apt-get install --yes --no-install-recommends \
     ca-certificates \
+    gnupg \
     lsb-release \
     software-properties-common \
     wget \
