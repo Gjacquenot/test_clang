@@ -11,8 +11,8 @@ RUN apt-get update -yq \
  && wget https://apt.llvm.org/llvm.sh \
  && chmod +x llvm.sh \
  && ./llvm.sh ${LLVM_VERSION} all \
- && alias clang='clang-${LLVM_VERSION}' \
- && alias clang++='clang-${LLVM_VERSION} -x c++' \
+ && ln /usr/bin/clang-${LLVM_VERSION} /usr/bin/clang \
+ && ln /usr/bin/clang-${LLVM_VERSION} /usr/bin/clang++ \
  && clang --version \
  && clang++ --version
 
