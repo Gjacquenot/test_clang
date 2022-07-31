@@ -4,6 +4,7 @@ RUN apt-get update -yq \
  && apt-get install --yes --no-install-recommends \
     ca-certificates \
     lsb-release \
+    software-properties-common \
     wget \
  && rm -rf /var/lib/apt/lists/* \
  && wget https://apt.llvm.org/llvm.sh \
