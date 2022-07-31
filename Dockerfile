@@ -4,6 +4,7 @@ RUN echo "deb http://apt.llvm.org/bullseye/ llvm-toolchain-bullseye main" >> /et
  && echo "deb-src http://apt.llvm.org/bullseye/ llvm-toolchain-bullseye main" >> /etc/apt/sources.list \
  && apt-get update -yq \
  && apt-get install --yes --no-install-recommends \
+    ca-certificates \
     clang-format \
     clang-tidy \
     clang-tools \
