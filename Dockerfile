@@ -1,5 +1,5 @@
 FROM debian:bullseye-slim
-
+ARG LLVM_VERSION=14
 RUN apt-get update -yq \
  && apt-get install --yes --no-install-recommends \
     ca-certificates \
@@ -10,8 +10,11 @@ RUN apt-get update -yq \
  && rm -rf /var/lib/apt/lists/* \
  && wget https://apt.llvm.org/llvm.sh \
  && chmod +x llvm.sh \
- && ./llvm.sh all \
- && clang --version
+ && ./llvm.sh ${LLVM_VERSION} all \
+ && alias clang='clang-${LLVM_VERSION}' \
+ && alias clang++='clang-${LLVM_VERSION} -x c++' \
+ && clang --version \
+ && clang++ --version
 
 # BOOST 1.60 with Boost geometry extensions
 # SSC : system thread random chrono
