@@ -1,32 +1,14 @@
 FROM debian:bullseye-slim
 
-RUN echo "deb http://apt.llvm.org/bullseye/ llvm-toolchain-bullseye main" >> /etc/apt/sources.list \
- && echo "deb-src http://apt.llvm.org/bullseye/ llvm-toolchain-bullseye main" >> /etc/apt/sources.list \
- && apt-get update -yq \
+RUN apt-get update -yq \
  && apt-get install --yes --no-install-recommends \
     ca-certificates \
-    clang-format \
-    clang-tidy \
-    clang-tools \
-    clang clangd \
-    libc++-dev \
-    libc++1 \
-    libc++abi-dev \
-    libc++abi1 \
-    libclang-dev \
-    libclang1 \
-    liblldb-dev \
-    libllvm-ocaml-dev \
-    libomp-dev \
-    libomp5 \
-    lld \
-    lldb \
-    llvm-dev \
-    llvm-runtime \
-    llvm \
-    python3-clang \
     wget \
- && rm -rf /var/lib/apt/lists/*
+ && rm -rf /var/lib/apt/lists/* \
+ && wget https://apt.llvm.org/llvm.sh \
+ && chmod +x llvm.sh \
+ && ./llvm.sh all \
+ && clang --version
 
 # BOOST 1.60 with Boost geometry extensions
 # SSC : system thread random chrono
@@ -41,6 +23,7 @@ RUN wget --quiet http://sourceforge.net/projects/boost/files/boost/1.60.0/boost_
  && ./b2 cxxflags=-fPIC --without-mpi --without-python link=static threading=single threading=multi --layout=tagged --prefix=/opt/boost install > /dev/null \
  && cd .. \
  && rm -rf boost_src
+
 # BOOST Geometry extension
 RUN git clone https://github.com/boostorg/geometry \
  && cd geometry \
