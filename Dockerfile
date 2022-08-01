@@ -86,6 +86,8 @@ RUN wget https://support.hdfgroup.org/ftp/HDF5/releases/hdf5-1.8/hdf5-1.8.12/src
  && cd HDF5_build \
  && cmake \
       -G "Unix Makefiles" \
+      -D CMAKE_CXX_COMPILER=clang++ \
+      -D CMAKE_C_COMPILER=clang \
       -D CMAKE_BUILD_TYPE:STRING=Release \
       -D CMAKE_INSTALL_PREFIX:PATH=${HDF5_INSTALL} \
       -D BUILD_SHARED_LIBS:BOOL=OFF \
