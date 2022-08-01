@@ -35,7 +35,7 @@ RUN wget --quiet http://sourceforge.net/projects/boost/files/boost/1.60.0/boost_
     threading=multi \
     --layout=tagged \
     --prefix=/opt/boost \
-    install > /dev/null \
+    install \
  && cd .. \
  && rm -rf boost_src
 
@@ -116,6 +116,8 @@ RUN git clone --recurse-submodules -b ${GIT_GRPC_TAG} https://github.com/grpc/gr
  && cd cmake/build \
  && cmake \
       -G "Unix Makefiles" \
+      -D CMAKE_CXX_COMPILER=clang++ \
+      -D CMAKE_C_COMPILER=clang \
       -D gRPC_INSTALL:BOOL=ON \
       -D CMAKE_INSTALL_PREFIX=/opt/grpc \
       -D CMAKE_BUILD_TYPE=Release \
