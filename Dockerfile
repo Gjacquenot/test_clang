@@ -25,8 +25,17 @@ RUN wget --quiet http://sourceforge.net/projects/boost/files/boost/1.60.0/boost_
  && tar -xzf boost_src.tar.gz --strip 1 -C boost_src \
  && rm -rf boost_src.tar.gz \
  && cd boost_src \
- && ./bootstrap.sh \
- && ./b2 cxxflags=-fPIC --without-mpi --without-python link=static threading=single threading=multi --layout=tagged --prefix=/opt/boost install > /dev/null \
+ && ./bootstrap.sh --with-toolset=clang \
+ && ./b2 toolset=clang cxxflags="-stdlib=libc++" linkflags="-stdlib=libc++" \
+    cxxflags=-fPIC \
+    --without-mpi \
+    --without-python \
+    link=static \
+    threading=single \
+    threading=multi \
+    --layout=tagged \
+    --prefix=/opt/boost \
+    install > /dev/null \
  && cd .. \
  && rm -rf boost_src
 
