@@ -4,6 +4,7 @@ RUN apt-get update -yq \
  && apt-get install --yes --no-install-recommends \
     ca-certificates \
     gnupg \
+    libbz2-dev \
     lsb-release \
     software-properties-common \
     wget \
