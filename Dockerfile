@@ -21,7 +21,7 @@ RUN apt-get update -yq \
 # SSC : system thread random chrono
 # XDYN : program_options filesystem system regex
 # libbz2 is required for Boost compilation
-RUN wget --quiet http://sourceforge.net/projects/boost/files/boost/1.60.0/boost_1_60_0.tar.gz -O boost_src.tar.gz \
+RUN wget --quiet https://boostorg.jfrog.io/artifactory/main/release/1.79.0/source/boost_1_79_0.tar.gz -O boost_src.tar.gz \
  && mkdir -p boost_src \
  && tar -xzf boost_src.tar.gz --strip 1 -C boost_src \
  && rm -rf boost_src.tar.gz \
@@ -43,7 +43,7 @@ RUN wget --quiet http://sourceforge.net/projects/boost/files/boost/1.60.0/boost_
 # BOOST Geometry extension
 RUN git clone https://github.com/boostorg/geometry \
  && cd geometry \
- && git checkout 4aa61e59a72b44fb3c7761066d478479d2dd63a0 \
+ && git checkout boost-1.79.0 \
  && cp -rf include/boost/geometry/extensions /opt/boost/include/boost/geometry/. \
  && cd .. \
  && rm -rf geometry
