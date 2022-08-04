@@ -3,6 +3,7 @@ ARG LLVM_VERSION=14
 RUN apt-get update -yq \
  && apt-get install --yes --no-install-recommends \
     ca-certificates \
+    cmake \
     git \
     gnupg \
     libbz2-dev \
