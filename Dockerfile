@@ -9,6 +9,7 @@ RUN apt-get update -yq \
     libbz2-dev \
     lsb-release \
     make \
+    ninja-build \
     software-properties-common \
     unzip \
     wget \
