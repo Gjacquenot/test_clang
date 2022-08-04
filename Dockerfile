@@ -36,14 +36,16 @@ RUN wget --quiet https://boostorg.jfrog.io/artifactory/main/release/1.79.0/sourc
     threading=multi \
     --layout=tagged \
     --prefix=/opt/boost \
-    install \
+    install > /dev/null \
  && cd .. \
  && rm -rf boost_src
 
-# BOOST Geometry extension
-RUN git clone https://github.com/boostorg/geometry \
- && cd geometry \
- && git checkout boost-1.79.0 \
+# BOOST Geometry extension, needed for ssc
+RUN wget --quiet https://github.com/boostorg/geometry/archive/refs/tags/boost-1.79.0.tar.gz -O boost_geom_src.tar.gz \
+ && mkdir -p boost_geom_src \
+ && tar -xzf boost_geom_src.tar.gz --strip 1 -C boost_geom_src \
+ && rm -rf boost_geom_src.tar.gz \
+ && cd boost_geom_src \
  && cp -rf include/boost/geometry/extensions /opt/boost/include/boost/geometry/. \
  && cd .. \
  && rm -rf geometry
@@ -58,7 +60,7 @@ RUN wget https://github.com/jbeder/yaml-cpp/archive/release-0.3.0.tar.gz -O yaml
  && tar -xzf yaml_cpp.tgz --strip 1 -C /opt/yaml_cpp \
  && rm -rf yaml_cpp.tgz
 
-RUN wget https://github.com/google/googletest/archive/release-1.11.0.tar.gz -O googletest.tgz \
+RUN wget https://github.com/google/googletest/archive/release-1.12.1.tar.gz -O googletest.tgz \
  && mkdir -p /opt/googletest \
  && tar -xzf googletest.tgz --strip 1 -C /opt/googletest \
  && rm -rf googletest.tgz
