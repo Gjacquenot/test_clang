@@ -8,6 +8,7 @@ RUN apt-get update -yq \
     libbz2-dev \
     lsb-release \
     software-properties-common \
+    unzip \
     wget \
  && rm -rf /var/lib/apt/lists/* \
  && wget https://apt.llvm.org/llvm.sh \
