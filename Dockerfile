@@ -8,6 +8,7 @@ RUN apt-get update -yq \
     gnupg \
     libbz2-dev \
     lsb-release \
+    make \
     software-properties-common \
     unzip \
     wget \
