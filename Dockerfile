@@ -3,6 +3,7 @@ ARG LLVM_VERSION=14
 RUN apt-get update -yq \
  && apt-get install --yes --no-install-recommends \
     ca-certificates \
+    git \
     gnupg \
     libbz2-dev \
     lsb-release \
@@ -40,12 +41,10 @@ RUN wget --quiet https://boostorg.jfrog.io/artifactory/main/release/1.79.0/sourc
  && cd .. \
  && rm -rf boost_src
 
-# BOOST Geometry extension, needed for ssc
-RUN wget --quiet https://github.com/boostorg/geometry/archive/refs/tags/boost-1.79.0.tar.gz -O boost_geom_src.tar.gz \
- && mkdir -p boost_geom_src \
- && tar -xzf boost_geom_src.tar.gz --strip 1 -C boost_geom_src \
- && rm -rf boost_geom_src.tar.gz \
- && cd boost_geom_src \
+# BOOST Geometry extension, needed for ssc. 
+RUN git clone https://github.com/boostorg/geometry \
+ && cd geometry \
+ && git checkout 49004c5dddb49c10be101e6727d94f11fecead87 \
  && cp -rf include/boost/geometry/extensions /opt/boost/include/boost/geometry/. \
  && cd .. \
  && rm -rf geometry
