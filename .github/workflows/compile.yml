@@ -27,4 +27,5 @@ jobs:
     - name: Compile
       run: |
         git clone --recursive https://gitlab.com/sirehna_naval_group/sirehna/xdyn
+        cd xdyn && git checkout new && cd ..
         make
