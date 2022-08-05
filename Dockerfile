@@ -161,3 +161,5 @@ RUN wget --quiet https://boostorg.jfrog.io/artifactory/main/release/1.63.0/sourc
     install > /dev/null \
  && cd .. \
  && rm -rf boost_src
+
+RUN rm -rf /opt/boost
