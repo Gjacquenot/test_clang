@@ -137,3 +137,27 @@ RUN git clone --recurse-submodules -b ${GIT_GRPC_TAG} https://github.com/grpc/gr
  && make install \
  && cd ../../.. \
  && rm -rf grpc_src
+ 
+ 
+ # BOOST 1.60 with Boost geometry extensions
+# SSC : system thread random chrono
+# XDYN : program_options filesystem system regex
+# libbz2 is required for Boost compilation
+RUN wget --quiet https://boostorg.jfrog.io/artifactory/main/release/1.63.0/source/boost_1_63_0.tar.gz -O boost_src.tar.gz \
+ && mkdir -p boost_src \
+ && tar -xzf boost_src.tar.gz --strip 1 -C boost_src \
+ && rm -rf boost_src.tar.gz \
+ && cd boost_src \
+ && ./bootstrap.sh --with-toolset=clang \
+ && ./b2 toolset=clang cxxflags="-stdlib=libc++" linkflags="-stdlib=libc++" \
+    cxxflags=-fPIC \
+    --without-mpi \
+    --without-python \
+    link=static \
+    threading=single \
+    threading=multi \
+    --layout=tagged \
+    --prefix=/opt/boost_1_63_0 \
+    install > /dev/null \
+ && cd .. \
+ && rm -rf boost_src
