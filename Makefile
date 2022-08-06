@@ -8,7 +8,7 @@ BUILD_TYPE=Release \
 BUILD_DIR=build_clang \
 CPACK_GENERATOR=DEB \
 DOCKER_IMAGE=gjacquenot/xdynclang \
-BOOST_ROOT=/opt/boost_1_63_0 \
+BOOST_ROOT=/opt/boost \
 HDF5_DIR=/usr/local/hdf5/share/cmake \
 BUILD_PYTHON_WRAPPER=False
 
@@ -27,7 +27,7 @@ clang_release: BUILD_TYPE = Release
 clang_release: BUILD_DIR = build_clang
 clang_release: CPACK_GENERATOR = DEB
 clang_release: DOCKER_IMAGE = gjacquenot/xdynclang
-clang_release: BOOST_ROOT = /opt/boost_1_63_0
+clang_release: BOOST_ROOT = /opt/boost
 clang_release: HDF5_DIR = /usr/local/hdf5/share/cmake
 clang_release: BUILD_PYTHON_WRAPPER = False
 clang_release: cmake-debian-clang-target build-debian-clang test-debian-clang
