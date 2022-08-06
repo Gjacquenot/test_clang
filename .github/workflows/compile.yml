@@ -22,7 +22,7 @@ jobs:
     - name: Build and push the docker image
       run: |
         docker pull gjacquenot/xdynclang || true
-        docker build --cache-from gjacquenot/xdynclang -t gjacquenot/xdynclang .
+        docker build -t gjacquenot/xdynclang .
         docker push gjacquenot/xdynclang
     - name: Compile
       run: |
