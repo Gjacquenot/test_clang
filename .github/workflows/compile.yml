@@ -21,7 +21,7 @@ jobs:
         password: ${{ secrets.DOCKERHUB_PASSWORD }}
     - name: Build and push the docker image
       run: |
-        docker pull gjacquenot/xdynclang || true
+        # docker pull gjacquenot/xdynclang || true
         docker build -t gjacquenot/xdynclang .
         docker push gjacquenot/xdynclang
     - name: Compile
