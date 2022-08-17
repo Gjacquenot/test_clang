@@ -28,7 +28,7 @@ RUN apt-get update -yq \
 # SSC : system thread random chrono
 # XDYN : program_options filesystem system regex
 # libbz2 is required for Boost compilation
-RUN wget --quiet https://boostorg.jfrog.io/artifactory/main/release/1.80.0/source/boost_1_80_0.tar.gz -O boost_src.tar.gz \
+RUN wget --quiet https://boostorg.jfrog.io/artifactory/main/release/1.79.0/source/boost_1_79_0.tar.gz -O boost_src.tar.gz \
  && mkdir -p boost_src \
  && tar -xzf boost_src.tar.gz --strip 1 -C boost_src \
  && rm -rf boost_src.tar.gz \
