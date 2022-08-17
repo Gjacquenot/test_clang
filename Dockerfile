@@ -7,6 +7,8 @@ RUN apt-get update -yq \
     git \
     gnupg \
     libbz2-dev \
+    libgfortran5 \
+    libgfortran-10-dev \
     lsb-release \
     make \
     ninja-build \
