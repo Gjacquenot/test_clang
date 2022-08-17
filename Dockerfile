@@ -15,7 +15,7 @@ RUN apt-get update -yq \
     software-properties-common \
     unzip \
     wget \
-    zlibg \
+    zlib1g \
  && rm -rf /var/lib/apt/lists/* \
  && wget https://apt.llvm.org/llvm.sh \
  && chmod +x llvm.sh \
