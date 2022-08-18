@@ -36,8 +36,7 @@ RUN wget --quiet https://boostorg.jfrog.io/artifactory/main/release/1.79.0/sourc
  && cd boost_src \
  && ./bootstrap.sh --with-toolset=clang \
  && ./b2 toolset=clang \ 
-    cxxflags="-fPIC -std=c++11 -stdlib=libc++" \
-    linkflags="-stdlib=libc++ -nodefaultlibs -lc++ -lc++abi -lm -lc -lgcc_s -lpthread" \
+    cxxflags="-fPIC" \
     --without-mpi \
     --without-python \
     link=static \
